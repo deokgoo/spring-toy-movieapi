@@ -48,6 +48,14 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <resorces>
+            <resorce>
+                <filtering>
+                    true
+                </filtering>
+                <directory></directory>
+            </resorce>
+        </resorces>
     </build>
 
 </project>

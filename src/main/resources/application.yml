@@ -3,4 +3,4 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .html
-    static-path-pattern: /resources/**
+    static-path-pattern: webapp/WEB-INF/views/**
