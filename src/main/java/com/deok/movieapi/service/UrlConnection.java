@@ -1,5 +1,6 @@
 package com.deok.movieapi.service;
 
+import lombok.Setter;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.BufferedReader;
@@ -11,8 +12,10 @@ import java.net.URL;
 @Configuration
 public class UrlConnection {
     private static final String baseUrl = "https://api.themoviedb.org/3";
-    private static final String apiKey = "a2456e15a53b6b362e8cc9a9e047fa83";
+    @Setter
+    private String apiKey = "";
     BufferedReader br = null;
+
     public String requestUrl(String url, String method, String data){
         URL obj = null;
         StringBuilder res = new StringBuilder();

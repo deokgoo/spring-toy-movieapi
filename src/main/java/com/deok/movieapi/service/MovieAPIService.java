@@ -16,13 +16,15 @@ public class MovieAPIService {
     @Autowired
     UrlConnection urlcon;
 
-    public List<MovieVO> findMovie(String query){
+    public List<MovieVO> findMovie(String query, String apiKey){
+        urlcon.setApiKey(apiKey);
         String json = urlcon.requestUrl("/search/movie","GET","&query="+query);
         List<MovieVO> lst = getMovieList(json);
         return lst;
     }
 
-    public List<MovieVO> getRanking(){
+    public List<MovieVO> getRanking(String apiKey){
+        urlcon.setApiKey(apiKey);
         String json = urlcon.requestUrl("/trending/movie/day","GET","");
         List<MovieVO> lst = getMovieList(json);
         return lst;
@@ -46,7 +48,6 @@ public class MovieAPIService {
             movieVO.setOverview(jn.get("overview").asText());
             movieVO.setPosterPath(jn.get("poster_path").asText());
             movieVO.setPopular(jn.get("popularity").asText());
-            System.out.println(movieVO.toString());
             lst.add(movieVO);
         }
         return lst;

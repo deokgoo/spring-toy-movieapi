@@ -2,12 +2,9 @@ package com.deok.movieapi.controller;
 
 import com.deok.movieapi.model.MovieVO;
 import com.deok.movieapi.service.MovieAPIService;
+import com.deok.movieapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,17 +14,20 @@ import java.util.List;
 public class MainController {
     @Autowired
     MovieAPIService movieAPIService;
+    @Autowired
+    UserService userService;
 
-    @GetMapping("/")
-    public String something(){
-        return "index";
+    @GetMapping("/find/{title}/{apikey}")
+    public List<MovieVO> findByTitle(@PathVariable(value = "title") String title, @PathVariable(value = "apikey") String apikey){
+        return movieAPIService.findMovie(title, apikey);
     }
-    @GetMapping("/find/{title}")
-    public List<MovieVO> findByTitle(@PathVariable(value = "title") String title){
-        return movieAPIService.findMovie(title);
+    @GetMapping("/rank/{apikey}")
+    public List<MovieVO> getRanking(@PathVariable(value = "apikey") String apikey){
+        return movieAPIService.getRanking(apikey);
     }
-    @GetMapping("/rank")
-    public List<MovieVO> getRanking(){
-        return movieAPIService.getRanking();
+    @GetMapping("/getapi")
+    public String checkUser(@RequestHeader(value = "Authorization")String id){
+        String uid = id.split(" ")[1];
+        return userService.checkUser(uid);
     }
 }

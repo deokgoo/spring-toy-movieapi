@@ -2,5 +2,4 @@ spring:
   mvc:
     view:
       prefix: /WEB-INF/views/
-      suffix: .html
-    static-path-pattern: webapp/WEB-INF/views/**
+      suffix: .jsp
