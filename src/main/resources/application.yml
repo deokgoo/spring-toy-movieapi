@@ -1,5 +1,10 @@
+#spring:
+#  mvc:
+#    view:
+#      prefix: /WEB-INF/views/
+#      suffix: .jsp
 spring:
-  mvc:
-    view:
-      prefix: /WEB-INF/views/
-      suffix: .jsp
+  thymeleaf:
+    servlet:
+      content-type: text/html
+    mode: HTML

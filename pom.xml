@@ -63,15 +63,15 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
-        <finalName>mavenjar</finalName>
-        <resources>
-            <resource>
-                <directory>/src/main/resources/</directory>
-            </resource>
-        </resources>
+        <finalName>movieAPI</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
